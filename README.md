@@ -1,34 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# web-video-viewer
 
-## Getting Started
+비디오 + vtt(HTML용 자막 파일)을 재생하기 위한 프로젝트 입니다.
 
-First, run the development server:
+## Start
 
-```bash
-npm run dev
-# or
-yarn dev
+우버이츠 강의 기준 세팅법.
+
+public/ 아래에 우버이츠 강의 파일을 디렉터리째로 저장합니다.
+
+![디렉터리 이미지](./USAGE_DIRECTORY_STRUCTURE.png)
+
+이후
+
+```
+$ yarn install
+$ yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+localhost:3000(기본 주소) 로 접속하면 public/ 아래의 디렉터리들의 이름이 표시되며, 이름을 클릭 시 해당 디렉터리 아래의 모든 영상을 재생하는 플레이어가 나타납니다.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+플레이어 아래쪽의 "자동으로 다음 영상 재생" 체크박스를 활성화 하면, 현재 영상이 끝나면 자동으로 다음 영상을 불러와 재생합니다.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+플레이어 하단의 "이전", "다음" 버튼으로 영상을 이동 할 수 있고
+"홈" 버튼으로 맨 처음 페이지로 돌아갈 수 있습니다.
