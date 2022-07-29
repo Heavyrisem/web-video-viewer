@@ -1,23 +1,16 @@
+const stringToNumber = (str: string): number =>
+  Number(str.replace(/[^0-9\.]+/g, ""));
+
 export const sortByStringNumber = (a: string, b: string): number => {
-  const aNumber = Number(a.split(" ")[0].replace(/[^0-9\.]+/g, ""));
-  const bNumber = Number(b.split(" ")[0].replace(/[^0-9\.]+/g, ""));
+  const aNumber = stringToNumber(a.split(" ")[0]);
+  const bNumber = stringToNumber(b.split(" ")[0]);
 
   return aNumber - bNumber;
 };
 
 export const sortByVideoName = (a: string, b: string): number => {
-  const aNumber = Number(
-    a
-      .split(" ")[0]
-      .split(".")[1]
-      .replace(/[^0-9\.]+/g, "")
-  );
-  const bNumber = Number(
-    b
-      .split(" ")[0]
-      .split(".")[1]
-      .replace(/[^0-9\.]+/g, "")
-  );
+  const aNumber = stringToNumber(a.split(" ")[0].split(".")[1]);
+  const bNumber = stringToNumber(b.split(" ")[0].split(".")[1]);
 
   return aNumber - bNumber;
 };

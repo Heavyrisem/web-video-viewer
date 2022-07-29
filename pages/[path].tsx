@@ -2,7 +2,7 @@ import { GetServerSideProps, NextPage } from "next";
 import React, { useCallback, useEffect, useState } from "react";
 import fs from "fs/promises";
 import Link from "next/link";
-import { sortByStringNumber, sortByVideoName } from "../helper/sort";
+import { sortByVideoName } from "../helper/sort";
 
 interface WatchPageProps {
   path: string;
@@ -35,11 +35,6 @@ const WatchPage: NextPage<WatchPageProps> = ({ path, videos, vtts }) => {
       increaseIndex();
     }
   }, [autoPlay, increaseIndex]);
-
-  // test
-  useEffect(() => {
-    console.log(currentIndex);
-  }, [currentIndex]);
 
   return (
     <div className="flex flex-col">
@@ -79,9 +74,11 @@ const WatchPage: NextPage<WatchPageProps> = ({ path, videos, vtts }) => {
         >
           이전
         </button>
-        <span className="rounded-md border-gray-300 border-2 px-1 py-0.5 mx-2">
-          <Link href="/">홈</Link>
-        </span>
+        <Link href="/">
+          <button className="rounded-md border-gray-300 border-2 px-1 py-0.5 mx-2">
+            홈
+          </button>
+        </Link>
         <button
           onClick={increaseIndex}
           className="rounded-md border-gray-300 border-2 px-1 py-0.5 mx-2"
@@ -102,7 +99,7 @@ export const getServerSideProps: GetServerSideProps<WatchPageProps> = async (
 
   const datas = await fs.readdir(`public/${path}`);
   const videos = datas
-    .filter((data) => data.endsWith(".mkv"))
+    .filter((data) => data.endsWith(process.env.VIDEO_EXTENSION))
     .sort(sortByVideoName);
   const vtts = datas
     .filter((data) => data.endsWith(".vtt"))
