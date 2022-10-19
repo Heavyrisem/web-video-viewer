@@ -42,7 +42,7 @@ const WatchPage: NextPage<WatchPageProps> = ({ path, videos, vtts }) => {
 
       <video
         controls
-        autoPlay={autoPlay}
+        autoPlay
         src={`${path}/${videos[currentIndex]}`}
         onEnded={endHandler}
         className="w-4/5 mx-auto"
